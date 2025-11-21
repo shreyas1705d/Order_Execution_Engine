@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "node16",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node16",
+    "skipLibCheck": true,
+    
+    // IMPORTANT: Add ES2021 support so AggregateError works
+    "lib": ["ES2021", "DOM"]
+  },
+  "include": ["src"]
+}

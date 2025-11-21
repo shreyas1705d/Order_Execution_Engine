@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order Execution Engine - Execute token swaps with real-time tracking">
+    <title>Order Execution Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">⚡</span>
+                    Order Execution Engine
+                </h1>
+                <p class="tagline">Real-time DEX order execution with live tracking</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Order Form Section -->
+            <section class="order-form-section">
+                <div class="card glass-card">
+                    <h2 class="section-title">Create New Order</h2>
+                    <form id="orderForm" class="order-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tokenIn">From Token</label>
+                                <select id="tokenIn" name="tokenIn" required>
+                                    <option value="">Select token</option>
+                                    <option value="USDC">USDC</option>
+                                    <option value="USDT">USDT</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="RAY">RAY</option>
+                                    <option value="ORCA">ORCA</option>
+                                </select>
+                            </div>
+                            <div class="swap-icon">→</div>
+                            <div class="form-group">
+                                <label for="tokenOut">To Token</label>
+                                <select id="tokenOut" name="tokenOut" required>
+                                    <option value="">Select token</option>
+                                    <option value="USDC">USDC</option>
+                                    <option value="USDT">USDT</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="RAY">RAY</option>
+                                    <option value="ORCA">ORCA</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" name="amount" min="0.01" step="0.01"
+                                placeholder="Enter amount" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Execute Order</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="spinner"></span>
+                                Processing...
+                            </span>
+                        </button>
+                    </form>
+
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </section>
+
+            <!-- Active Order Tracker -->
+            <section id="activeOrderSection" class="active-order-section" style="display: none;">
+                <div class="card glass-card">
+                    <h2 class="section-title">Active Order Tracking</h2>
+                    <div id="orderTracker" class="order-tracker">
+                        <div class="order-info">
+                            <div class="order-id-display">
+                                <span class="label">Order ID:</span>
+                                <span id="activeOrderId" class="order-id"></span>
+                            </div>
+                            <div class="order-details">
+                                <span id="activeOrderDetails"></span>
+                            </div>
+                        </div>
+
+                        <div class="status-timeline">
+                            <div class="timeline-item" data-status="pending">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Order Received</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-status="fetching_quotes">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Fetching Quotes</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-status="building">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Building Transaction</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-status="submitted">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Transaction Submitted</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-status="confirmed">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Order Confirmed</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-status="completed">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>Completed</h4>
+                                    <p class="timeline-message"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="orderResult" class="order-result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order History -->
+            <section class="order-history-section">
+                <h2 class="section-title">Order History</h2>
+                <div id="orderHistory" class="order-history">
+                    <p class="empty-state">No orders yet. Create your first order above!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Order Execution Engine © 2025 | Real-time DEX Trading</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

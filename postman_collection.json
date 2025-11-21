@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "OrderExec Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Execute Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"tokenIn\\\": \\\"USDC\\\",\\n  \\\"tokenOut\\\": \\\"RAY\\\",\\n  \\\"amount\\\": 100\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/orders/execute",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "orders",
+            "execute"
+          ]
+        }
+      }
+    }
+  ]
+}
